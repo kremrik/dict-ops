@@ -24,6 +24,14 @@ class test_diff(unittest.TestCase):
         output = diff(obj1, obj2)
         self.assertEqual(gold, output)
 
+    def test_no_diff_str(self):
+        # caught bug with iterable strings
+        obj1 = {"foo": "1"}
+        obj2 = {"foo": "1"}
+        gold = {}
+        output = diff(obj1, obj2)
+        self.assertEqual(gold, output)
+
     def test_single_level(self):
         obj1 = {"foo": None, "bar": 1, "qux": 1}
         obj2 = {"foo": 1, "baz": 2}
@@ -76,6 +84,16 @@ class test_put(unittest.TestCase):
         output = put(obj1, obj2)
         self.assertEqual(gold, output)
 
+    def test_no_diff_str(self):
+        # caught bug with iterable strings
+        # changes behavior where we do not want to update a
+        # key with default settings if it already exists
+        obj1 = {"foo": "1"}
+        obj2 = {"foo": "2"}
+        gold = {"foo": "1"}
+        output = put(obj1, obj2)
+        self.assertEqual(gold, output)
+
     def test_single_level(self):
         obj1 = {"bar": 1, "qux": 1}
         obj2 = {"foo": 1}
@@ -120,6 +138,13 @@ class test_cut(unittest.TestCase):
         obj1 = {"bar": 1}
         obj2 = {"foo": 1}
         gold = {"foo": 1}
+        output = cut(obj1, obj2)
+        self.assertEqual(gold, output)
+
+    def test_no_diff_str(self):
+        obj1 = {"foo": "1"}
+        obj2 = {"foo": "2"}
+        gold = {}
         output = cut(obj1, obj2)
         self.assertEqual(gold, output)
 
