@@ -57,7 +57,7 @@ def put_(
     # prevents a key existing in both sides from being
     # overwritten by the value from the left side
     if not value_comparator:
-        value_comparator = lambda x, y: x
+        value_comparator = lambda x, y: y
 
     d2 = deepcopy(d2)
     return walk(
