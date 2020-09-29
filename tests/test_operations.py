@@ -90,7 +90,7 @@ class test_put(unittest.TestCase):
         # key with default settings if it already exists
         obj1 = {"foo": "1"}
         obj2 = {"foo": "2"}
-        gold = {"foo": "1"}
+        gold = {"foo": "2"}
         output = put(obj1, obj2)
         self.assertEqual(gold, output)
 
