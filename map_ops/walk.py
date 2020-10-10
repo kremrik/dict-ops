@@ -29,13 +29,7 @@ def walk(
         A Python dict
     """
     if not initializer:
-        initializer = lambda x, y: x
-    if not on_missing:
-        on_missing = lambda x: x
-    if not on_match:
-        on_match = lambda x, y: None
-    if not list_strategy:
-        list_strategy = lambda x, y: x
+        initializer = lambda x, _: x
 
     output = initializer(d1, d2)
 
@@ -43,7 +37,11 @@ def walk(
         res = None
 
         if k not in d2:
-            res = on_missing(v)
+            if not on_missing:
+                output[k] = v
+            else:
+                # allow ANY falsy value the user specifies
+                output[k] = on_missing(v)
 
         elif isinstance(v, dict):
             res = walk(
@@ -54,14 +52,22 @@ def walk(
                 on_match,
                 list_strategy,
             )
+            if res:
+                output[k] = res
 
         elif isinstance(v, (set, list, tuple)):
-            res = list_strategy(v, d2[k])
+            if not list_strategy:
+                output[k] = v
+            else:
+                # allow ONLY [] falsy value
+                _res = list_strategy(v, d2[k])
+                if _res is None:
+                    pass
+                else:
+                    output[k] = _res
 
         else:
-            res = on_match(v, d2[k])
-
-        if res:
-            output[k] = res
+            if on_match:
+                output[k] = on_match(v, d2[k])
 
     return output
