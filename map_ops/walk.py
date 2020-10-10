@@ -18,6 +18,8 @@ def walk(
         d1: Python dict
         initializer: A Callable to tell `walk` what to
             compare `d1` to while traversing
+        on_missing: A Callable to tell `walk` how to handle
+            a key present in `d1` but not `d2`
         on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
