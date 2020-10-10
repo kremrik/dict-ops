@@ -1,6 +1,6 @@
 from map_ops.walk import walk
 from copy import deepcopy
-from typing import Callable
+from typing import Any, Callable
 
 
 __all__ = ["cut_", "diff_", "put_"]
@@ -9,9 +9,9 @@ __all__ = ["cut_", "diff_", "put_"]
 def diff_(
     d1: dict,
     d2: dict,
-    on_missing: Callable = None,
-    on_match: Callable = None,
-    list_strategy: Callable = None,
+    on_missing: Callable[[Any], Any] = None,
+    on_match: Callable[[Any, Any], Any] = None,
+    list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for differencing two dicts
 
@@ -42,9 +42,9 @@ def diff_(
 def put_(
     d1: dict,
     d2: dict,
-    on_missing: Callable = None,
-    on_match: Callable = None,
-    list_strategy: Callable = None,
+    on_missing: Callable[[Any], Any] = None,
+    on_match: Callable[[Any, Any], Any] = None,
+    list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for inserting `d1` into `d2`
 
@@ -80,9 +80,9 @@ def put_(
 def cut_(
     d1: dict,
     d2: dict,
-    on_missing: Callable = None,
-    on_match: Callable = None,
-    list_strategy: Callable = None,
+    on_missing: Callable[[Any], Any] = None,
+    on_match: Callable[[Any, Any], Any] = None,
+    list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for removing `d1` from `d2`
 

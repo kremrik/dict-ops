@@ -236,11 +236,11 @@ complex objects which are, themselves, in a list:</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A Python dict</p></li>
 <li><p><strong>d1</strong> – Python dict</p></li>
-<li><p><strong>on_missing</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to handle
+<li><p><strong>on_missing</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to handle
 a key present in <cite>d1</cite> but not <cite>d2</cite></p></li>
-<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to
 handle same keys with differing values</p></li>
-<li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to
 handle any lists it encounters</p></li>
 </ul>
 </dd>
@@ -262,11 +262,11 @@ handle any lists it encounters</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A Python dict</p></li>
 <li><p><strong>d1</strong> – Python dict</p></li>
-<li><p><strong>on_missing</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to handle
+<li><p><strong>on_missing</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to handle
 a key present in <cite>d1</cite> but not <cite>d2</cite></p></li>
-<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to
 handle same keys with differing values</p></li>
-<li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to
 handle any lists it encounters</p></li>
 </ul>
 </dd>
@@ -288,11 +288,11 @@ handle any lists it encounters</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A Python dict</p></li>
 <li><p><strong>d1</strong> – Python dict</p></li>
-<li><p><strong>on_missing</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to handle
+<li><p><strong>on_missing</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to handle
 a key present in <cite>d1</cite> but not <cite>d2</cite></p></li>
-<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to
 handle same keys with differing values</p></li>
-<li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – A Callable to tell <cite>walk</cite> how to
 handle any lists it encounters</p></li>
 </ul>
 </dd>
