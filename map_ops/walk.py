@@ -52,7 +52,7 @@ def walk(
         elif isinstance(v, (set, list, tuple)):
             res = list_strategy(v, d2[k])
 
-        elif v != d2[k]:
+        else:
             res = value_comparator(v, d2[k])
 
         if res:
