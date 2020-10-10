@@ -229,14 +229,14 @@ complex objects which are, themselves, in a list:</p>
 </div>
 <span class="target" id="module-map_ops.core"></span><dl class="py function">
 <dt id="map_ops.core.cut_">
-<code class="sig-prename descclassname">map_ops.core.</code><code class="sig-name descname">cut_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d1</span></em>, <em class="sig-param"><span class="n">d2</span></em>, <em class="sig-param"><span class="n">value_comparator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">list_strategy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map_ops.core.cut_" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">map_ops.core.</code><code class="sig-name descname">cut_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d1</span></em>, <em class="sig-param"><span class="n">d2</span></em>, <em class="sig-param"><span class="n">on_match</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">list_strategy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map_ops.core.cut_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generalized function for removing <cite>d1</cite> from <cite>d2</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A Python dict</p></li>
 <li><p><strong>d1</strong> – Python dict</p></li>
-<li><p><strong>value_comparator</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
 handle same keys with differing values</p></li>
 <li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
 handle any lists it encounters</p></li>
@@ -253,14 +253,14 @@ handle any lists it encounters</p></li>
 
 <dl class="py function">
 <dt id="map_ops.core.diff_">
-<code class="sig-prename descclassname">map_ops.core.</code><code class="sig-name descname">diff_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d1</span></em>, <em class="sig-param"><span class="n">d2</span></em>, <em class="sig-param"><span class="n">value_comparator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">list_strategy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map_ops.core.diff_" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">map_ops.core.</code><code class="sig-name descname">diff_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d1</span></em>, <em class="sig-param"><span class="n">d2</span></em>, <em class="sig-param"><span class="n">on_match</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">list_strategy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map_ops.core.diff_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generalized function for differencing two dicts</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A Python dict</p></li>
 <li><p><strong>d1</strong> – Python dict</p></li>
-<li><p><strong>value_comparator</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
 handle same keys with differing values</p></li>
 <li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
 handle any lists it encounters</p></li>
@@ -277,14 +277,14 @@ handle any lists it encounters</p></li>
 
 <dl class="py function">
 <dt id="map_ops.core.put_">
-<code class="sig-prename descclassname">map_ops.core.</code><code class="sig-name descname">put_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d1</span></em>, <em class="sig-param"><span class="n">d2</span></em>, <em class="sig-param"><span class="n">value_comparator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">list_strategy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map_ops.core.put_" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">map_ops.core.</code><code class="sig-name descname">put_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d1</span></em>, <em class="sig-param"><span class="n">d2</span></em>, <em class="sig-param"><span class="n">on_match</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">list_strategy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map_ops.core.put_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generalized function for inserting <cite>d1</cite> into <cite>d2</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A Python dict</p></li>
 <li><p><strong>d1</strong> – Python dict</p></li>
-<li><p><strong>value_comparator</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
+<li><p><strong>on_match</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
 handle same keys with differing values</p></li>
 <li><p><strong>list_strategy</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – A Callable to tell <cite>walk</cite> how to
 handle any lists it encounters</p></li>

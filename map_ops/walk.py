@@ -8,7 +8,8 @@ def walk(
     d1: dict,
     d2: dict,
     initializer: Callable[[dict, dict], dict] = None,
-    value_comparator: Callable[[Any, Any], Any] = None,
+    on_missing: Callable[[Any], Any] = None,
+    on_match: Callable[[Any, Any], Any] = None,
     list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for pairwise traversal of dicts
@@ -17,7 +18,7 @@ def walk(
         d1: Python dict
         initializer: A Callable to tell `walk` what to
             compare `d1` to while traversing
-        value_comparator: A Callable to tell `walk` how to
+        on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
             handle any lists it encounters
@@ -27,8 +28,10 @@ def walk(
     """
     if not initializer:
         initializer = lambda x, y: x
-    if not value_comparator:
-        value_comparator = lambda x, y: None
+    if not on_missing:
+        on_missing = lambda x: x
+    if not on_match:
+        on_match = lambda x, y: None
     if not list_strategy:
         list_strategy = lambda x, y: x
 
@@ -38,14 +41,15 @@ def walk(
         res = None
 
         if k not in d2:
-            res = v
+            res = on_missing(v)
 
         elif isinstance(v, dict):
             res = walk(
                 v,  # type: ignore
                 d2[k],  # type: ignore
                 initializer,
-                value_comparator,
+                on_missing,
+                on_match,
                 list_strategy,
             )
 
@@ -53,7 +57,7 @@ def walk(
             res = list_strategy(v, d2[k])
 
         else:
-            res = value_comparator(v, d2[k])
+            res = on_match(v, d2[k])
 
         if res:
             output[k] = res

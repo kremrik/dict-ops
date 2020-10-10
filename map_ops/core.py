@@ -9,7 +9,7 @@ __all__ = ["cut_", "diff_", "put_"]
 def diff_(
     d1: dict,
     d2: dict,
-    value_comparator: Callable = None,
+    on_match: Callable = None,
     list_strategy: Callable = None,
 ) -> dict:
     """Generalized function for differencing two dicts
@@ -17,7 +17,7 @@ def diff_(
     Args:
         d1: A Python dict
         d1: Python dict
-        value_comparator: A Callable to tell `walk` how to
+        on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
             handle any lists it encounters
@@ -30,7 +30,7 @@ def diff_(
         d1,
         d2,
         initializer=lambda x, y: {},
-        value_comparator=value_comparator,
+        on_match=on_match,
         list_strategy=list_strategy,
     )
 
@@ -38,7 +38,7 @@ def diff_(
 def put_(
     d1: dict,
     d2: dict,
-    value_comparator: Callable = None,
+    on_match: Callable = None,
     list_strategy: Callable = None,
 ) -> dict:
     """Generalized function for inserting `d1` into `d2`
@@ -46,7 +46,7 @@ def put_(
     Args:
         d1: A Python dict
         d1: Python dict
-        value_comparator: A Callable to tell `walk` how to
+        on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
             handle any lists it encounters
@@ -56,15 +56,15 @@ def put_(
     """
     # prevents a key existing in both sides from being
     # overwritten by the value from the left side
-    if not value_comparator:
-        value_comparator = lambda x, y: y
+    if not on_match:
+        on_match = lambda x, y: y
 
     d2 = deepcopy(d2)
     return walk(
         d1,
         d2,
         initializer=lambda x, y: y,
-        value_comparator=value_comparator,
+        on_match=on_match,
         list_strategy=list_strategy,
     )
 
@@ -72,7 +72,7 @@ def put_(
 def cut_(
     d1: dict,
     d2: dict,
-    value_comparator: Callable = None,
+    on_match: Callable = None,
     list_strategy: Callable = None,
 ) -> dict:
     """Generalized function for removing `d1` from `d2`
@@ -80,7 +80,7 @@ def cut_(
     Args:
         d1: A Python dict
         d1: Python dict
-        value_comparator: A Callable to tell `walk` how to
+        on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
             handle any lists it encounters
@@ -93,6 +93,6 @@ def cut_(
         d2,
         d1,
         initializer=lambda x, y: {},
-        value_comparator=value_comparator,
+        on_match=on_match,
         list_strategy=list_strategy,
     )

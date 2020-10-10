@@ -19,12 +19,12 @@ class test_walk(unittest.TestCase):
         output = walk(d1, d2, initializer=initializer)
         self.assertEqual(gold, output)
 
-    def test_value_comparator(self):
+    def test_on_match(self):
         d1 = {"foo": 1, "bar": 1}
         d2 = {"foo": 2, "baz": 2}
         compare = lambda x, y: y
         gold = {"foo": 2, "bar": 1}
-        output = walk(d1, d2, value_comparator=compare)
+        output = walk(d1, d2, on_match=compare)
         self.assertEqual(gold, output)
 
     def test_list_strategy(self):
