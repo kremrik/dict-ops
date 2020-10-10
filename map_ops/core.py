@@ -9,6 +9,7 @@ __all__ = ["cut_", "diff_", "put_"]
 def diff_(
     d1: dict,
     d2: dict,
+    on_missing: Callable = None,
     on_match: Callable = None,
     list_strategy: Callable = None,
 ) -> dict:
@@ -17,6 +18,8 @@ def diff_(
     Args:
         d1: A Python dict
         d1: Python dict
+        on_missing: A Callable to tell `walk` how to handle
+            a key present in `d1` but not `d2`
         on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
@@ -30,6 +33,7 @@ def diff_(
         d1,
         d2,
         initializer=lambda x, y: {},
+        on_missing=on_missing,
         on_match=on_match,
         list_strategy=list_strategy,
     )
@@ -38,6 +42,7 @@ def diff_(
 def put_(
     d1: dict,
     d2: dict,
+    on_missing: Callable = None,
     on_match: Callable = None,
     list_strategy: Callable = None,
 ) -> dict:
@@ -46,6 +51,8 @@ def put_(
     Args:
         d1: A Python dict
         d1: Python dict
+        on_missing: A Callable to tell `walk` how to handle
+            a key present in `d1` but not `d2`
         on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
@@ -64,6 +71,7 @@ def put_(
         d1,
         d2,
         initializer=lambda x, y: y,
+        on_missing=on_missing,
         on_match=on_match,
         list_strategy=list_strategy,
     )
@@ -72,6 +80,7 @@ def put_(
 def cut_(
     d1: dict,
     d2: dict,
+    on_missing: Callable = None,
     on_match: Callable = None,
     list_strategy: Callable = None,
 ) -> dict:
@@ -80,6 +89,8 @@ def cut_(
     Args:
         d1: A Python dict
         d1: Python dict
+        on_missing: A Callable to tell `walk` how to handle
+            a key present in `d1` but not `d2`
         on_match: A Callable to tell `walk` how to
             handle same keys with differing values
         list_strategy: A Callable to tell `walk` how to
@@ -93,6 +104,7 @@ def cut_(
         d2,
         d1,
         initializer=lambda x, y: {},
+        on_missing=on_missing,
         on_match=on_match,
         list_strategy=list_strategy,
     )
