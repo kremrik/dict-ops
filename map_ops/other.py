@@ -61,7 +61,6 @@ def rdiff(d1: dict, d2: dict) -> dict:
     return diff_(
         d1,
         d2,
-        value_comparator=lambda x, y: x,
         list_strategy=_diff_list,
     )
 
