@@ -1,4 +1,5 @@
 from map_ops.core import diff_, put_
+from typing import Union
 
 
 __all__ = ["rmerge", "rdiff"]
@@ -65,13 +66,13 @@ def rdiff(d1: dict, d2: dict) -> dict:
     )
 
 
-def _diff_list(l1: list, l2: list) -> list:
+def _diff_list(l1: list, l2: list) -> Union[None, list]:
     """
     positional comparison mimicking Clojure's
     clojure.data/diff function
     """
     if l1 == l2:
-        return []
+        return None
 
     end_slice = min(len(l1), len(l2))
     diffs = [
@@ -80,4 +81,7 @@ def _diff_list(l1: list, l2: list) -> list:
     ]
     remainder = l1[end_slice:]
 
-    return diffs + remainder
+    output = diffs + remainder
+    if output == []:
+        return None
+    return output
