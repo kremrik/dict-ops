@@ -1,5 +1,7 @@
 # map-ops
 ![Python package](https://github.com/kremrik/map-ops/workflows/Python%20package/badge.svg)
+![coverage](images/coverage.svg)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A simple, but high-powered, module for operating on dictionaries
 

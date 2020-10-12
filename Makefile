@@ -8,7 +8,7 @@ GREEN := \e[32m
 #----------------------------------------------------------
 
 .PHONY: check
-check : unit-tests type-check black-format lint sphinx success
+check : unit-tests code-coverage type-check black-format lint sphinx success
 
 .PHONY: unit-tests
 unit-tests :
@@ -16,6 +16,13 @@ unit-tests :
 	@echo -e '$(BLUE)unit-tests'
 	@echo -e        '----------$(NO_COLOR)'
 	@python3 -m pytest ./*/test*.py
+
+.PHONY: code-coverage
+code-coverage : cov
+	@echo
+	@echo -e '$(BLUE)code-coverage'
+	@echo -e 		'-------------$(NO_COLOR)'
+	@coverage-badge -f -o images/coverage.svg
 
 .PHONY: type-check
 type-check :
@@ -58,9 +65,12 @@ success :
 
 #----------------------------------------------------------
 
+.PHONY: cov
+cov:
+	@python -m pytest --cov=$(MODULE) --cov-config=.coveragerc --cov-report html
+
 .PHONY: coverage
-coverage: 
-	@pytest --cov=$(MODULE) --cov-config=.coveragerc --cov-report html
+coverage: cov
 	@python3 -m http.server 8000 --directory htmlcov/
 
 .PHONY: docs
