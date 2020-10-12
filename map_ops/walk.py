@@ -34,40 +34,45 @@ def walk(
     output = initializer(d1, d2)
 
     for k, v in d1.items():
-        res = None
+        try:
+            res = None
 
-        if k not in d2:
-            if not on_missing:
-                output[k] = v
-            else:
-                # allow ANY falsy value the user specifies
-                output[k] = on_missing(v)
-
-        elif isinstance(v, dict):
-            res = walk(
-                v,  # type: ignore
-                d2[k],  # type: ignore
-                initializer,
-                on_missing,
-                on_match,
-                list_strategy,
-            )
-            if res:
-                output[k] = res
-
-        elif isinstance(v, (set, list, tuple)):
-            if not list_strategy:
-                output[k] = v
-            else:
-                # allow ONLY [] falsy value
-                _res = list_strategy(v, d2[k])
-                if _res is None:
-                    pass
+            if k not in d2:
+                if not on_missing:
+                    output[k] = v
                 else:
-                    output[k] = _res
+                    # allow ANY falsy values
+                    output[k] = on_missing(v)
 
-        else:
-            if on_match:
-                output[k] = on_match(v, d2[k])
+            elif isinstance(v, dict):
+                res = walk(
+                    v,  # type: ignore
+                    d2[k],  # type: ignore
+                    initializer,
+                    on_missing,
+                    on_match,
+                    list_strategy,
+                )
+                if res:
+                    output[k] = res
+
+            elif isinstance(v, (set, list, tuple)):
+                if not list_strategy:
+                    output[k] = v
+                else:
+                    # allow ONLY [] falsy value
+                    _res = list_strategy(v, d2[k])
+                    if _res is None:
+                        pass
+                    else:
+                        output[k] = _res
+
+            else:
+                if on_match:
+                    output[k] = on_match(v, d2[k])
+
+        except Exception as e:
+            e.args = (k, e.args)
+            raise e
 
     return output
