@@ -11,6 +11,7 @@ def diff_(
     d2: dict,
     on_missing: Callable[[Any], Any] = None,
     on_match: Callable[[Any, Any], Any] = None,
+    on_mismatch: Callable[[Any, Any], Any] = None,
     list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for differencing two dicts
@@ -35,6 +36,7 @@ def diff_(
         initializer=lambda x, y: {},
         on_missing=on_missing,
         on_match=on_match,
+        on_mismatch=on_mismatch,
         list_strategy=list_strategy,
     )
 
@@ -44,6 +46,7 @@ def put_(
     d2: dict,
     on_missing: Callable[[Any], Any] = None,
     on_match: Callable[[Any, Any], Any] = None,
+    on_mismatch: Callable[[Any, Any], Any] = None,
     list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for inserting `d1` into `d2`
@@ -73,6 +76,7 @@ def put_(
         initializer=lambda x, y: y,
         on_missing=on_missing,
         on_match=on_match,
+        on_mismatch=on_mismatch,
         list_strategy=list_strategy,
     )
 
@@ -82,6 +86,7 @@ def cut_(
     d2: dict,
     on_missing: Callable[[Any], Any] = None,
     on_match: Callable[[Any, Any], Any] = None,
+    on_mismatch: Callable[[Any, Any], Any] = None,
     list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for removing `d1` from `d2`
@@ -106,5 +111,6 @@ def cut_(
         initializer=lambda x, y: {},
         on_missing=on_missing,
         on_match=on_match,
+        on_mismatch=on_mismatch,
         list_strategy=list_strategy,
     )

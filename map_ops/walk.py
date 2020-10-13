@@ -10,6 +10,7 @@ def walk(
     initializer: Callable[[dict, dict], dict] = None,
     on_missing: Callable[[Any], Any] = None,
     on_match: Callable[[Any, Any], Any] = None,
+    on_mismatch: Callable[[Any, Any], Any] = None,
     list_strategy: Callable[[Any, Any], Any] = None,
 ) -> dict:
     """Generalized function for pairwise traversal of dicts
@@ -22,6 +23,8 @@ def walk(
             a key present in `d1` but not `d2`
         on_match: A Callable to tell `walk` how to
             handle same keys with differing values
+        on_mismatch: A Callable to tell `walk` how to
+            handle same keys with differing types
         list_strategy: A Callable to tell `walk` how to
             handle any lists it encounters
 
@@ -44,14 +47,21 @@ def walk(
                     # allow ANY falsy values
                     output[k] = on_missing(v)
 
+            elif type(v) != type(d2[k]):
+                if not on_mismatch:
+                    pass
+                else:
+                    output[k] = on_mismatch(v, d2[k])
+
             elif isinstance(v, dict):
                 res = walk(
-                    v,  # type: ignore
-                    d2[k],  # type: ignore
-                    initializer,
-                    on_missing,
-                    on_match,
-                    list_strategy,
+                    d1=v,  # type: ignore
+                    d2=d2[k],  # type: ignore
+                    initializer=initializer,
+                    on_missing=on_missing,
+                    on_match=on_match,
+                    on_mismatch=on_mismatch,
+                    list_strategy=list_strategy,
                 )
                 if res:
                     output[k] = res
