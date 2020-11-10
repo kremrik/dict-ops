@@ -46,7 +46,6 @@ returning new objects (no weird behavior when mutating original objects).
    :caption: Contents:
 
    operations
-   other
    core
 
 Indices and tables
